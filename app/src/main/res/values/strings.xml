@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Memory Game</string>
+    <string name="tv_level">Level: 1</string>
+    <string name="tv_number">0</string>
+    <string name="number_input_hint">What was the number?</string>
+    <string name="confirm">Confirm</string>
+</resources>
