@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     String generatedNumber;
 
     int currentlevel = 1;
+    public static final int ACTIVITY_REQUEST = 819774836;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
