@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv_level, tv_number, tv_speed;
+    TextView tv_level, tv_number, tv_speed, tv_score;
     EditText et_number;
     Button confirm;
 
@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     String speed_string;
     int speed = 1000;
     int currentlevel = 1;
+    int currentscore = 0;
+    int point = 10;
+    int highest_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
         tv_number = findViewById(R.id.tv_number);
         et_number = findViewById(R.id.et_number);
         tv_speed = findViewById(R.id.speed_test);
+        tv_score = findViewById(R.id.tv_score);
 
         confirm = findViewById(R.id.b_confirm);
 
 
-        // Display the current level
-        tv_level.setText("Level : " + currentlevel);
+        // Display the current level and score
+        tv_level.setText("Level: " + currentlevel);
+        tv_score.setText("Score: " + currentscore);
 
         rand = new Random();
 
@@ -54,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
         et_number.setVisibility(View.GONE);
         confirm.setVisibility(View.GONE);
         tv_number.setVisibility(View.VISIBLE);
+
+        //Hide the button to high score page
+
 
         //Display random numbers according to levels
         generatedNumber = generatenumber(currentlevel);
@@ -81,9 +89,11 @@ public class MainActivity extends AppCompatActivity {
                     tv_number.setVisibility(View.VISIBLE);
 
                     currentlevel++;
+                    currentscore += point;
 
                     // Display the current level
-                    tv_level.setText("Level : " + currentlevel);
+                    tv_level.setText("Level: " + currentlevel);
+                    tv_score.setText("Score: " + currentscore);
 
                     //Display random numbers according to levels
                     generatedNumber = generatenumber(currentlevel);
@@ -115,16 +125,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkSpeed(String speed_string) {
-        switch (speed_string) {
-            case "slow":
-                speed = 2000;
-                break;
-            case "fast":
-                speed = 700;
-                break;
-            case "default":
-                speed = 1000;
-                break;
+        if (speed_string != null) {
+            switch (speed_string) {
+                case "slow":
+                    speed = 2000;
+                    point = 7;
+                    break;
+                case "fast":
+                    speed = 700;
+                    point = 20;
+                    break;
+                case "default":
+                    speed = 1000;
+                    point = 10;
+                    break;
+            }
+        } else {
+            speed = 1000;
         }
+
+    }
+
+    public void endGame() {
+        confirm.setEnabled(false);
+        Intent intent = new Intent(getApplicationContext(),HighScoreScreen.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        intent.putExtra("level", currentlevel);
+        intent.putExtra("score", currentscore);
+        intent.putExtra("speed", speed_string);
+        intent.putExtra("highest_score",highest_score);
+        startActivity(intent);
+        //todo: store level, speed, score
     }
 }

@@ -14,4 +14,7 @@
     <string name="speed_option_slow">Slow</string>
     <string name="speed_option_default">Default</string>
     <string name="speed_option_fast">fast</string>
+    <string name="end_btn">End the game</string>
+    <string name="tv_speed">Speed:</string>
+    <string name="tv_score">Score:</string>
 </resources>

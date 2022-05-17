@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".HighScoreScreen">
 
 
     <TextView
@@ -19,46 +19,30 @@
         android:id="@+id/speed_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tv_speed"
+        android:text="Speed:"
         android:textSize="14sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_score"
-        android:text="@string/tv_score"/>
+        android:layout_marginTop="20dp"
+        android:text="Your Score:"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/tv_number"
-        android:textSize="32sp" />
-
-    <EditText
-        android:id="@+id/et_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:digits="1234567890"
-        android:ems="10"
-        android:hint="@string/number_input_hint"
-        android:importantForAutofill="no"
-        android:inputType="numberSigned"
+        android:text="The higher score is:"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/b_confirm"
+        android:id="@+id/restart_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/confirm_btn" />
+        android:layout_marginTop="80dp"
+        android:text="RESTART" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/end_btn"
-        android:text="@string/end_btn"
-        android:layout_marginTop="10dp"/>
 </LinearLayout>
