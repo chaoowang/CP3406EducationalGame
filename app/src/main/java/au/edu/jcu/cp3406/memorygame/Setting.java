@@ -17,15 +17,15 @@ public class Setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         Button slow_btn = findViewById(R.id.slow_btn);
-        slow_btn.setOnClickListener(v -> setspeed(slow_btn,2));
-        Button normal_btn = findViewById(R.id.normal_btn);
-        normal_btn.setOnClickListener(v->setspeed(normal_btn,1));
+        slow_btn.setOnClickListener(v -> setSpeed(slow_btn,"slow"));
+        Button normal_btn = findViewById(R.id.default_btn);
+        normal_btn.setOnClickListener(v->setSpeed(normal_btn,"default"));
         Button fast_btn = findViewById(R.id.fast_btn);
-        fast_btn.setOnClickListener(v->setspeed(fast_btn, 0.5F));
+        fast_btn.setOnClickListener(v->setSpeed(fast_btn, "fast"));
 
     }
 
-    public void setspeed(View view, float speed){
+    public void setSpeed(View view, String speed){
         Intent data = new Intent();
         data.putExtra("speed",speed);
         setResult(RESULT_OK, data);

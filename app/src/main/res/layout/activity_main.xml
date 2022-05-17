@@ -12,7 +12,15 @@
         android:id="@+id/tv_level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tv_level" />
+        android:text="@string/tv_level"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/speed_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speed:"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_number"
@@ -30,8 +38,9 @@
         android:digits="1234567890"
         android:ems="10"
         android:hint="@string/number_input_hint"
+        android:importantForAutofill="no"
         android:inputType="numberSigned"
-        android:importantForAutofill="no"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/b_confirm"

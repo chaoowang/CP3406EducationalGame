@@ -12,6 +12,6 @@
     <string name="hint_speed_option">hint: The difficulty will increase when the speed is set to fast. The score will also increase as the difficulty increase.</string>
     <string name="speed_setting">Display speed:</string>
     <string name="speed_option_slow">Slow</string>
-    <string name="speed_option_normal">Normal</string>
+    <string name="speed_option_default">Default</string>
     <string name="speed_option_fast">fast</string>
 </resources>

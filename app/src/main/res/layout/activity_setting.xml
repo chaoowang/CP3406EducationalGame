@@ -32,10 +32,10 @@
         android:text="@string/speed_option_slow" />
 
     <Button
-        android:id="@+id/normal_btn"
+        android:id="@+id/default_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/speed_option_normal" />
+        android:text="@string/speed_option_default" />
 
     <Button
         android:id="@+id/fast_btn"
