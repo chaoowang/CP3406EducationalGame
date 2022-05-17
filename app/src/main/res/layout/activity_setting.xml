@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".LandingPage">
+    tools:context=".Setting">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/memory_game"
+        android:text="@string/setting_page"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="32sp" />
@@ -20,19 +20,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/game_instructions"
+        android:text="@string/speed_setting"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/start"
+        android:id="@+id/slow_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/start_btn" />
+        android:layout_marginTop="5dp"
+        android:text="@string/speed_option_slow" />
+
     <Button
-        android:id="@+id/setting"
+        android:id="@+id/normal_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setting_btn"/>
+        android:text="@string/speed_option_normal" />
+
+    <Button
+        android:id="@+id/fast_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/speed_option_fast" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/hint_speed_option"
+        android:textSize="14sp" />
 </LinearLayout>

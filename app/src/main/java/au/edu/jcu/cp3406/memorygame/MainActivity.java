@@ -3,20 +3,12 @@ package au.edu.jcu.cp3406.memorygame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.SystemClock;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Random rand;
 
     String generatedNumber;
+    int speed = 3;
 
     int currentlevel = 1;
     public static final int ACTIVITY_REQUEST = 819774836;
@@ -63,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 tv_number.setVisibility(View.GONE);
 
             }
-        },1000);
+        }, 1000L *speed);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                             tv_number.setVisibility(View.GONE);
 
                         }
-                    },1000);
+                    }, 1000L *speed);
                 } else {
                     tv_level.setText("Game Over!! The Number was " + generatedNumber);
                     confirm.setEnabled(false);
