@@ -41,6 +41,8 @@ public class HighScoreScreen extends AppCompatActivity {
     }
 
     public void restart() {
-        finish();
+        Intent intent = new Intent(HighScoreScreen.this, LandingPage.class);
+        startActivity(intent);
+        HighScoreScreen.this.finish();
     }
 }
