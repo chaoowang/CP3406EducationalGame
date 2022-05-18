@@ -1,7 +1,5 @@
 package au.edu.jcu.cp3406.memorygame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,13 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int GAME_REQUEST = 289473;
     TextView tv_level, tv_number, tv_speed, tv_score;
     EditText et_number;
-    Button confirm;
+    Button confirm, endgame;
 
     Random rand;
 
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     int currentlevel = 1;
     int currentscore = 0;
     int point = 10;
-    int highest_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         tv_score = findViewById(R.id.tv_score);
 
         confirm = findViewById(R.id.b_confirm);
-
+        endgame = findViewById(R.id.end_btn);
 
         // Display the current level and score
         tv_level.setText("Level: " + currentlevel);
@@ -59,13 +59,12 @@ public class MainActivity extends AppCompatActivity {
         et_number.setVisibility(View.GONE);
         confirm.setVisibility(View.GONE);
         tv_number.setVisibility(View.VISIBLE);
-
-        //Hide the button to high score page
-
+        endgame.setVisibility(View.GONE);
 
         //Display random numbers according to levels
         generatedNumber = generatenumber(currentlevel);
         tv_number.setText(generatedNumber);
+
 
         //Display the elements after a second and Hide the number
         new Handler().postDelayed(new Runnable() {
@@ -110,6 +109,19 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     tv_level.setText("Game Over!! The Number was " + generatedNumber);
                     confirm.setEnabled(false);
+                    endgame.setVisibility(View.VISIBLE);
+                    endgame.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this, HighScoreScreen.class);
+                            intent.putExtra("level",currentlevel);
+                            intent.putExtra("score", currentscore);
+                            intent.putExtra("speed",speed_string);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    });
                 }
             }
         });
@@ -144,17 +156,5 @@ public class MainActivity extends AppCompatActivity {
             speed = 1000;
         }
 
-    }
-
-    public void endGame() {
-        confirm.setEnabled(false);
-        Intent intent = new Intent(getApplicationContext(),HighScoreScreen.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-        intent.putExtra("level", currentlevel);
-        intent.putExtra("score", currentscore);
-        intent.putExtra("speed", speed_string);
-        intent.putExtra("highest_score",highest_score);
-        startActivity(intent);
-        //todo: store level, speed, score
     }
 }

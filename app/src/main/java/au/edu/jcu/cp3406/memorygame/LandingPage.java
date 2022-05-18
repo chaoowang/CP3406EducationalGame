@@ -12,7 +12,8 @@ import android.widget.TextView;
 public class LandingPage extends AppCompatActivity {
 
     String speed_string;
-
+    int currentscore, currentlevel;
+    String speed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +25,14 @@ public class LandingPage extends AppCompatActivity {
     }
 
     public void start(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(LandingPage.this, MainActivity.class);
         intent.putExtra("speed_string", speed_string);
         startActivity(intent);
+        LandingPage.this.finish();
     }
 
     public void setting(View view) {
-        Intent intent = new Intent(this, Setting.class);
+        Intent intent = new Intent(LandingPage.this, Setting.class);
         startActivityForResult(intent, Setting.SETTING_REQUEST);
     }
 
