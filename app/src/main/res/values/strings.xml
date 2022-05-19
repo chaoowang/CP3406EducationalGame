@@ -17,4 +17,13 @@
     <string name="end_btn">End the game</string>
     <string name="tv_speed">Speed:</string>
     <string name="tv_score">Score:</string>
+    <string name="highscore1">-</string>
+    <string name="highscore2">-</string>
+    <string name="highscore3">-</string>
+    <string name="highscore4">-</string>
+    <string name="highscore5">-</string>
+    <string name="restart_btn">RESTART</string>
+    <string name="highest_msg">The highest score is:</string>
+    <string name="your_score">Your Score:</string>
+    <string name="speed">Speed:</string>
 </resources>

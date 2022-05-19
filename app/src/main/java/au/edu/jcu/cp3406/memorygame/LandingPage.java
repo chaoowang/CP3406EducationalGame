@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 public class LandingPage extends AppCompatActivity {
 
-    String speed_string;
-    int currentscore, currentlevel;
-    String speed;
+    String speed_string = "default";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

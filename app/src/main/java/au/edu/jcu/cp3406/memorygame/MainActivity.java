@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int GAME_REQUEST = 289473;
     TextView tv_level, tv_number, tv_speed, tv_score;
     EditText et_number;
     Button confirm, endgame;

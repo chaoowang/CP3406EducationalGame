@@ -19,7 +19,7 @@
         android:id="@+id/speed_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Speed:"
+        android:text="@string/speed"
         android:textSize="14sp" />
 
     <TextView
@@ -27,23 +27,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Your Score:"
+        android:text="@string/your_score"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_highestscore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/highest_msg"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="The higher score is:"
+        android:text="High Score"
+        android:textSize="20sp"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textAlignment="center"
+        android:layout_marginTop="60dp"
+        android:background="@color/cardview_shadow_end_color"/>
+
+    <TextView
+        android:id="@+id/highscore1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore1"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@color/cardview_shadow_end_color"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/highscore2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore2"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@color/cardview_shadow_end_color"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/highscore3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore3"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@color/cardview_shadow_end_color"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/highscore4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore4"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@color/cardview_shadow_end_color"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/highscore5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscore5"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:background="@color/cardview_shadow_end_color"
+        android:layout_marginTop="5dp"/>
 
     <Button
         android:id="@+id/restart_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="RESTART" />
+        android:text="@string/restart_btn" />
 
 </LinearLayout>
