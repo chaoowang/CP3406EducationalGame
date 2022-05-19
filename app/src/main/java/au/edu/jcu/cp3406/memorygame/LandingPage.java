@@ -20,6 +20,8 @@ public class LandingPage extends AppCompatActivity {
         start_btn.setOnClickListener(v -> start(start_btn));
         Button setting_btn = findViewById(R.id.setting);
         setting_btn.setOnClickListener(v -> setting(setting_btn));
+        Intent intent = getIntent();
+        speed_string = intent.getStringExtra("speed");
     }
 
     public void start(View view) {
