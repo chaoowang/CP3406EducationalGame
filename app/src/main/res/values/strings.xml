@@ -26,4 +26,5 @@
     <string name="highest_msg">The highest score is:</string>
     <string name="your_score">Your Score:</string>
     <string name="speed">Speed:</string>
+    <string name="high_score">High Score</string>
 </resources>

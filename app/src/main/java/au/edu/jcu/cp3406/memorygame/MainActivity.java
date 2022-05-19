@@ -46,13 +46,16 @@ public class MainActivity extends AppCompatActivity {
         endgame = findViewById(R.id.end_btn);
 
         // Display the current level and score
-        tv_level.setText("Level: " + currentlevel);
-        tv_score.setText("Score: " + currentscore);
+        String level_msg = "Level: "+currentlevel;
+        tv_level.setText(level_msg);
+        String score_msg = "Score: "+currentscore;
+        tv_score.setText(score_msg);
 
         rand = new Random();
 
         //Display the speed
-        tv_speed.setText("Speed: " + speed_string);
+        String speed_msg = "Speed: "+speed_string;
+        tv_speed.setText(speed_msg);
 
         //Hide the Input and the Button and show the number
         et_number.setVisibility(View.GONE);
@@ -66,73 +69,61 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Display the elements after a second and Hide the number
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                et_number.setVisibility(View.VISIBLE);
-                confirm.setVisibility(View.VISIBLE);
-                tv_number.setVisibility(View.GONE);
-            }
-
+        new Handler().postDelayed(() -> {
+            et_number.setVisibility(View.VISIBLE);
+            confirm.setVisibility(View.VISIBLE);
+            tv_number.setVisibility(View.GONE);
         }, speed);
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        confirm.setOnClickListener(view -> {
 
-                if (generatedNumber.equals(et_number.getText().toString())) {
+            if (generatedNumber.equals(et_number.getText().toString())) {
 
-                    et_number.setVisibility(View.GONE);
-                    confirm.setVisibility(View.GONE);
-                    tv_number.setVisibility(View.VISIBLE);
+                et_number.setVisibility(View.GONE);
+                confirm.setVisibility(View.GONE);
+                tv_number.setVisibility(View.VISIBLE);
 
-                    currentlevel++;
-                    currentscore += point;
+                currentlevel++;
+                currentscore += point;
 
-                    // Display the current level
-                    tv_level.setText("Level: " + currentlevel);
-                    tv_score.setText("Score: " + currentscore);
+                // Display the current level
+                tv_level.setText(level_msg);
+                tv_score.setText(score_msg);
 
-                    //Display random numbers according to levels
-                    generatedNumber = generatenumber(currentlevel);
-                    tv_number.setText(generatedNumber);
+                //Display random numbers according to levels
+                generatedNumber = generatenumber(currentlevel);
+                tv_number.setText(generatedNumber);
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            et_number.setVisibility(View.VISIBLE);
-                            confirm.setVisibility(View.VISIBLE);
-                            tv_number.setVisibility(View.GONE);
-                        }
-                    }, speed);
-                } else {
-                    tv_level.setText("Game Over!! The Number was " + generatedNumber);
-                    confirm.setEnabled(false);
-                    endgame.setVisibility(View.VISIBLE);
-                    endgame.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent();
-                            intent.setClass(MainActivity.this, HighScoreScreen.class);
-                            intent.putExtra("level",currentlevel);
-                            intent.putExtra("score", currentscore);
-                            intent.putExtra("speed",speed_string);
-                            startActivity(intent);
-                            MainActivity.this.finish();
-                        }
-                    });
-                }
+                new Handler().postDelayed(() -> {
+                    et_number.setVisibility(View.VISIBLE);
+                    confirm.setVisibility(View.VISIBLE);
+                    tv_number.setVisibility(View.GONE);
+                }, speed);
+            } else {
+                String end_msg = "Game Over! The Number was"+generatedNumber;
+                tv_level.setText(end_msg);
+                confirm.setEnabled(false);
+                endgame.setVisibility(View.VISIBLE);
+                endgame.setOnClickListener(view1 -> {
+                    Intent intent1 = new Intent();
+                    intent1.setClass(MainActivity.this, HighScoreScreen.class);
+                    intent1.putExtra("level",currentlevel);
+                    intent1.putExtra("score", currentscore);
+                    intent1.putExtra("speed",speed_string);
+                    startActivity(intent1);
+                    MainActivity.this.finish();
+                });
             }
         });
     }
 
     public String generatenumber(int digits) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < digits; i++) {
             int randomDigit = rand.nextInt(10);
-            output = output + "" + randomDigit;
+            output.append(randomDigit);
         }
-        return output;
+        return output.toString();
     }
 
     public void checkSpeed(String speed_string) {

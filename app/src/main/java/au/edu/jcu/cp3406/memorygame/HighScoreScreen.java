@@ -13,14 +13,14 @@ import java.util.Arrays;
 
 public class HighScoreScreen extends AppCompatActivity {
 
-    int currentlevel = 1;
-    int currentscore = 0;
-    TextView tv_level, tv_score, tv_speed, tv_highestscore, tv_highscore1, tv_highscore2, tv_highscore3, tv_highscore4, tv_highscore5;
+    int currentLevel = 1;
+    int currentScore = 0;
+    TextView tv_level, tv_score, tv_speed, tv_highestScore, tv_highScore1, tv_highScore2, tv_highScore3, tv_highScore4, tv_highScore5;
     String speed = "default";
     Button restart_btn;
     SharedPreferences prefs;
-    String[] highscore;
-    String highscore_string = "0,0,0,0,0";
+    String[] highScore;
+    String highScoreString = "0,0,0,0,0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,37 +28,41 @@ public class HighScoreScreen extends AppCompatActivity {
         setContentView(R.layout.activity_high_score_screen);
 
         prefs = this.getSharedPreferences("preference", Context.MODE_PRIVATE);
-        getHighscore();
+        getHighScore();
 
         Intent intent = getIntent();
-        currentlevel = intent.getIntExtra("level", 0);
-        currentscore = intent.getIntExtra("score", 0);
+        currentLevel = intent.getIntExtra("level", 0);
+        currentScore = intent.getIntExtra("score", 0);
         speed = intent.getStringExtra("speed");
 
         tv_level = findViewById(R.id.tv_level);
         tv_score = findViewById(R.id.tv_score);
         tv_speed = findViewById(R.id.speed_test);
-        tv_highestscore = findViewById(R.id.tv_highestscore);
-        tv_highestscore.setVisibility(View.GONE);
-        tv_highscore1 = findViewById(R.id.highscore1);
-        tv_highscore2= findViewById(R.id.highscore2);
-        tv_highscore3 = findViewById(R.id.highscore3);
-        tv_highscore4 = findViewById(R.id.highscore4);
-        tv_highscore5 =findViewById(R.id.highscore5);
+        tv_highestScore = findViewById(R.id.tv_highestscore);
+        tv_highestScore.setVisibility(View.GONE);
+        tv_highScore1 = findViewById(R.id.highscore1);
+        tv_highScore2 = findViewById(R.id.highscore2);
+        tv_highScore3 = findViewById(R.id.highscore3);
+        tv_highScore4 = findViewById(R.id.highscore4);
+        tv_highScore5 =findViewById(R.id.highscore5);
 
-        tv_level.setText("Level: " + currentlevel);
-        tv_score.setText("Your Score: " + currentscore);
-        tv_speed.setText("Speed: " + speed);
-        tv_highestscore.setText("Congrautions! You are in the highscore!");
+        String level_msg = "Level: "+ currentLevel;
+        String score_msg = "Your Score: "+ currentScore;
+        String speed_msg = "Speed: "+speed;
+        tv_level.setText(level_msg);
+        tv_score.setText(score_msg);
+        tv_speed.setText(speed_msg);
+        String congrats_msg = "Congratulations! You are in the high score!";
+        tv_highestScore.setText(congrats_msg);
 
         checkHighScore();
-        saveHighscore();
+        saveHighScore();
 
-        tv_highscore1.setText(highscore[4]);
-        tv_highscore2.setText(highscore[3]);
-        tv_highscore3.setText(highscore[2]);
-        tv_highscore4.setText(highscore[1]);
-        tv_highscore5.setText(highscore[0]);
+        tv_highScore1.setText(highScore[4]);
+        tv_highScore2.setText(highScore[3]);
+        tv_highScore3.setText(highScore[2]);
+        tv_highScore4.setText(highScore[1]);
+        tv_highScore5.setText(highScore[0]);
 
         restart_btn = findViewById(R.id.restart_btn);
         restart_btn.setOnClickListener(v -> restart());
@@ -74,33 +78,29 @@ public class HighScoreScreen extends AppCompatActivity {
     public void checkHighScore() {
         Integer[] scores = new Integer[5];
         for (int i = 0; i < 5; i++) {
-            scores[i] = Integer.parseInt(highscore[i]);
+            scores[i] = Integer.parseInt(highScore[i]);
         }
         Arrays.sort(scores);
-        if (currentscore >= scores[0]) {
-            scores[0] = currentscore;
-            tv_highestscore.setVisibility(View.VISIBLE);
+        if (currentScore >= scores[0]) {
+            scores[0] = currentScore;
+            tv_highestScore.setVisibility(View.VISIBLE);
             Arrays.sort(scores);
             for (int i = 0; i < 5; i++) {
-                highscore[i] = scores[i].toString();
+                highScore[i] = scores[i].toString();
             }
         }
     }
 
-    public void saveHighscore() {
-        /*StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 5; i++) {
-            sb.append(highscore[i]).append(",");
-        }*/
-        String sb = highscore[0] + "," + highscore[1] + "," + highscore[2] + "," + highscore[3] + "," + highscore[4];
+    public void saveHighScore() {
+        String sb = highScore[0] + "," + highScore[1] + "," + highScore[2] + "," + highScore[3] + "," + highScore[4];
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("highscore", sb);
+        editor.putString("highScore", sb);
         editor.apply();
     }
 
-    public void getHighscore() {
-        highscore_string = prefs.getString("highscore", "0,0,0,0,0");
-        highscore = highscore_string.split(",");
+    public void getHighScore() {
+        highScoreString = prefs.getString("highScore", "0,0,0,0,0");
+        highScore = highScoreString.split(",");
 
     }
 }
